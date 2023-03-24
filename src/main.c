@@ -1,12 +1,3 @@
-/********************************** (C) COPYRIGHT *******************************
- * File Name          : main.c
- * Author             : sadkotheguest
- * Version            : V0.0.1
- * Date               : 2023/03/14
- * Description        : Main program body.
- * Copyright (c) sadkotheguest
- * SPDX-License-Identifier: Apache-2.0
- *******************************************************************************/
 #include "ch32v20x.h"
 #include "debug.h"
 
@@ -23,10 +14,6 @@ void LED1_BLINK_INIT(void)
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    // GPIO_Init(GPIOA, &GPIO_InitStructure);
-    // GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
-    // GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    // GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
@@ -38,7 +25,6 @@ int main(void)
     LED1_BLINK_INIT();
 
     GPIO_ResetBits(GPIOA, GPIO_Pin_0 | GPIO_Pin_1);
-    // GPIO_ResetBits(GPIOA, GPIO_Pin_1);
 
     while(1)
     {
