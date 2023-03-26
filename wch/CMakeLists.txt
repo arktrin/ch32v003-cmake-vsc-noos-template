@@ -1,4 +1,4 @@
-add_subdirectory(hal_libraries/ch32v203_hal)
+add_subdirectory(hal_libraries/ch32v003_hal)
 add_subdirectory(hal_libraries/bmsis)
 #add_subdirectory(hal_drivers)
 set(LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/Ld/Link.ld)
