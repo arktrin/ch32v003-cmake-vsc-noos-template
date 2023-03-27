@@ -31,7 +31,7 @@ else()
   find_toolchain("riscv-none-elf-" "riscv-none-embed-")
 endif()
 
-set(CPU_FLAGS "-march=rv32imac_zicsr_zifencei -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore")
+set(CPU_FLAGS "-march=rv32ec_zicsr -mabi=ilp32e -fmessage-length=0 -msmall-data-limit=0 -msave-restore -fsigned-char")
 
 set(COMMON_FLAGS "-fdata-sections -ffunction-sections")
 
@@ -49,9 +49,8 @@ set(CMAKE_CXX_FLAGS_RELEASE ${FLAGS_RELEASE})
 set(CMAKE_CXX_FLAGS_MINSIZEREL ${FLAGS_SIZE})
 SET(CMAKE_ASM_FLAGS "${CFLAGS} ${CPU_FLAGS} -x assembler-with-cpp")
 
-set(LD_FLAGS "-Wl,--gc-sections -Wl,--print-memory-usage -nostartfiles")
-
-set(CMAKE_EXE_LINKER_FLAGS "${CPU_FLAGS} --specs=nano.specs --specs=nosys.specs -ffreestanding ${LD_FLAGS}" CACHE INTERNAL "")
+set(LD_FLAGS "-march=rv32ec -mabi=ilp32e -Wl,--gc-sections -Wl,--print-memory-usage -nostartfiles")
+set(CMAKE_EXE_LINKER_FLAGS "${LD_FLAGS} --specs=nano.specs --specs=nosys.specs " CACHE INTERNAL "")
 
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
